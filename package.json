@@ -8,6 +8,10 @@
   },
   "author": "badNboji",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badNboji/tapered-js"
+  },
   "dependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
