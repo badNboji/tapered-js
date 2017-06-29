@@ -1,6 +1,6 @@
 {
   "name": "tapered.js",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Easy inline test-writing using Tape",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,10 @@
   },
   "author": "badNboji",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badNboji/tapered-js"
+  },
   "dependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
