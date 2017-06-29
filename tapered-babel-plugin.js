@@ -1,5 +1,5 @@
 module.exports = function({types: t}) {
-  let tapeCount = 0;
+  // let tapeCount = 0;
   return {
     visitor: {
       Program(path, state) {
@@ -25,6 +25,11 @@ module.exports = function({types: t}) {
               //   comments[i].value = reqFileName;
               //   tapeCount++;
               // }
+            }
+            if (comments[i].value.includes("%g")) {
+              let globalStart = comments[i].value.indexOf("%g");
+              // console.log("global", comments[i].value)
+              comments[i].value = " ß∂dNß0j1" + comments[i].value.slice(globalStart+2).replace(/^[ ]+|[ ]+$/g, '');
             }
 // ----------------------------------------------------------------------------
             // SECTION INCLUDES NAME/DESCRIPTION - ASSERTION AND VARIABLES

@@ -1,10 +1,10 @@
 
-function webpackCommentExtractionPlugin() {}
+function tapered() {}
 
-webpackCommentExtractionPlugin.prototype.apply = function(compiler) {
+tapered.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     function unComment() {
-        const file = compilation.assets['../test/tape-test-sample.js'];
+        const file = compilation.assets['../test/js/supertest-tapered.js'];
       if (file === undefined) {
         console.log('file is undefined')
         // Refactor with Promises?
@@ -12,9 +12,9 @@ webpackCommentExtractionPlugin.prototype.apply = function(compiler) {
       } else if (file) {
         console.log('file is defined')
         // if (file.source().includes('dabTape')) {
-          compilation.assets['../test/tape-test-sample.js'] = {
+          compilation.assets['../test/js/supertest-tapered.js'] = {
             source: function() {
-              console.log(file.source());
+              // console.log(file.source());
               // remove BadNBojiTape if we move away from multiple file/framework feature
              return "const test = require('tape')" + "\n" + file.source().replace(/(\/\*\ ß∂dNß0j1Tape)|(\/\*\ ß∂dNß0j1)|(\*\/)/g,'');
             },
@@ -30,4 +30,4 @@ webpackCommentExtractionPlugin.prototype.apply = function(compiler) {
   });
 };
 
-module.exports = webpackCommentExtractionPlugin;
+module.exports = tapered;
