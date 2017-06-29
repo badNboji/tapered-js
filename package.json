@@ -1,0 +1,19 @@
+{
+  "name": "tapered.js",
+  "version": "0.6.3",
+  "description": "Easy inline test-writing using Tape",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "badNboji",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
+    "tape": "^4.6.3",
+    "webpack": "^3.0.0"
+  }
+}
