@@ -4,7 +4,7 @@ function tapered() {}
 tapered.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     function unComment() {
-        const file = compilation.assets['../test/js/supertest-tapered.js'];
+        const file = compilation.assets['INSERT TEST FILE LOCATION HERE'];
       if (file === undefined) {
         console.log('file is undefined')
         // Refactor with Promises?
@@ -12,7 +12,7 @@ tapered.prototype.apply = function(compiler) {
       } else if (file) {
         console.log('file is defined')
         // if (file.source().includes('dabTape')) {
-          compilation.assets['../test/js/supertest-tapered.js'] = {
+          compilation.assets['INSERT TEST FILE LOCATION HERE'] = {
             source: function() {
               // console.log(file.source());
               // remove BadNBojiTape if we move away from multiple file/framework feature
