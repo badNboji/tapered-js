@@ -1,5 +1,4 @@
 module.exports = function({types: t}) {
-  // let tapeCount = 0;
   return {
     visitor: {
       Program(path, state) {
@@ -10,36 +9,64 @@ module.exports = function({types: t}) {
           // loop through the comments
           for (let i = 0; i < comments.length; i += 1) {
             // console.log('comments', path.parent.comments[i].value)
-            // require tape library setup
-            // const reqTape = " dabTape */"
-            // require file name setup
-            const reqFileName = " ß∂dNß0j1const " + state.file.opts.sourceMapTarget.slice(0, state.file.opts.sourceMapTarget.length - 3) + " = require('" + state.file.opts.filename + "');";
+            const reqFileName = "const " + state.file.opts.sourceMapTarget.slice(0, state.file.opts.sourceMapTarget.length - 3) + " = require('" + state.file.opts.filename + "');";
             // if a comments requires Tape then replace with complete require statement
             // TODO FIX TAPE SYNTAX!!!!!!!!!
-            if (comments[i].value.includes('%tapered')) {
-              // if (tapeCount === 0) {
-                comments[i].value = reqFileName;
-                // comments[i].value = reqTape + "\n" + "/*" + reqFileName;
-              //   tapeCount++;
-              // } else {
-              //   comments[i].value = reqFileName;
-              //   tapeCount++;
-              // }
-            }
-            if (comments[i].value.includes("%g")) {
-              let globalStart = comments[i].value.indexOf("%g");
-              // console.log("global", comments[i].value)
-              comments[i].value = " ß∂dNß0j1" + comments[i].value.slice(globalStart+2).replace(/^[ ]+|[ ]+$/g, '');
-            }
+            // let reqTestFile = "";
+            // let fileSaved = [];
+            // if (comments[i].value.includes("%tapered") || comments[i].value.includes("%g")) {
+            //     let reqSplit = comments[i].value.split("%");
+            //       console.log("split", reqSplit)
+            //     for(var req = 0; req < reqSplit.length; req++) {
+            //         //checks if it has tapered to add the "file route"
+            //         if (reqSplit[req].includes('tapered')) {
+            //             reqTestFile += reqFileName + "\n";
+            //             if (fileSaved[reqTestFile]) {
+            //               reqTestFile = "";
+            //             } else {
+            //               fileSaved.push(reqTestFile);
+            //             }
+            //         }
+            //         // checks if it contains global variables
+            //         if (reqSplit[req] !== undefined && /\S/.test(reqSplit[req]) && reqSplit[req][0].includes('g')) {
+            //           reqTestFile +=  reqSplit[req].slice(1).replace(/\r\n/, "\n").split(/\n/)[0].replace(/^[ ]+|[ ]+$/g, '') + "\n";
+            //           if (fileSaved[reqTestFile]) {
+            //             reqTestFile = "";
+            //           } else {
+            //             fileSaved.push(reqTestFile);
+            //           }
+            //         }
+            //         //checks if other required frameworks have been declared
+            //         if (reqSplit[req] !== undefined && /\S/.test(reqSplit[req]) && !reqSplit[req].includes('tapered') && !reqSplit[req][0].includes('g')) {
+            //           reqTestFile += "const " + reqSplit[req].toLowerCase().replace(/\r\n/, "\n").split(/\n/)[0].replace(/^[ ]+|[ ]+$/g, '') + " = require('" + reqSplit[req].toLowerCase().replace(/\r\n/, "\n").split(/\n/)[0].replace(/^[ ]+|[ ]+$/g, '') + "');\n";
+            //           if (fileSaved[reqTestFile]) {
+            //             reqTestFile = "";
+            //           } else {
+            //             fileSaved.push(reqTestFile);
+            //           }
+            //        }
+
+            //      }
+            //     comments[i].value = " ß∂dNß0j1" + reqTestFile;
+            //   }
+              if (comments[i].value.includes("%tapered")) {
+                comments[i].value = " ß∂dNß0j1" + reqFileName;
+              }
+              if (comments[i].value.includes("%g")) {
+                let globalStart = comments[i].value.indexOf("%g");
+                console.log("golball", comments[i].value)
+                comments[i].value = " ß∂dNß0j1" + comments[i].value.slice(globalStart+2).replace(/^[ ]+|[ ]+$/g, '');
+              }
 // ----------------------------------------------------------------------------
             // SECTION INCLUDES NAME/DESCRIPTION - ASSERTION AND VARIABLES
             // Split on squigglys/tildas
-            if (comments[i].value.includes('~')) {
-              let currcomments = comments[i].value.split("~");
+            if (comments[i].value.includes('>>:')) {
+              let currcomments = comments[i].value.split(">>:");
               // currcomments[0] is empty
               // currcomments[1] = name/description and is required
               let test = ' ß∂dNß0j1test';
               let description = currcomments[1].replace(/\r\n/, "\n").split(/\n/)[0].replace(/^[ ]+|[ ]+$/g, '');
+               //CHANGES JP
               if (description[0] === 'x' && description[1] === ':') {
                     description = description.slice(2).replace(/^[ ]+|[ ]+$/g, '');
                     test = ' ß∂dNß0j1test.skip';
@@ -57,7 +84,7 @@ module.exports = function({types: t}) {
               let startIndExpression;
               let expressionEndPoint;
               let argumentLength = 0;
-              let variables;
+              let variables = "";
               let finalCommentsTranspiled = "";
               let endTest = "\t" + "t.end();" + "\n";
               // Helper function that splits the ASSERTION: actual, expected, and expression
@@ -115,6 +142,7 @@ module.exports = function({types: t}) {
                     return resultOfAssertion;
                 }
                 if (argumentLength === 2) {
+                  // console.log("length is 2")
                     if (argumentSplit.length > 1) {
                       // console.log("1st", argumentSplit);
                       expression = argumentSplit[0].slice(startIndExpression, expressionEndPoint).replace(/^[ ]+|[ ]+$/g, '');
@@ -142,8 +170,13 @@ module.exports = function({types: t}) {
                   }
                   // if currcomments[index] is a variable (optional)
                   if (currcomments[index][0] !== 'a' && currcomments[index][1] !== ':' && currcomments[index] !== undefined && /\S/.test(currcomments[index])) {
-                    variables = "\t" + currcomments[index].replace(/^[ ]+|[ ]+$/g, '');
+
+                    let splitVariable = currcomments[index].replace(/\r\n/, "\n").split(/\n/);
+                    for(let eachVar = 0; eachVar < splitVariable.length; eachVar++) {
+                      variables += "\t" + splitVariable[eachVar].replace(/^[ ]+|[ ]+$/g, '') + "\n";
+                    }
                     finalCommentsTranspiled += variables;
+                    variables = "";
                   }
                   //if curcomments[index] is ending in plan
                   if (currcomments[index].indexOf("p:") !== -1 && currcomments[index][0] === 'p' && currcomments[index][1] === ':') {
