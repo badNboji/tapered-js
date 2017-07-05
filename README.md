@@ -80,6 +80,7 @@ test('add', function (t) {
 
 Syntax | Function
 ------------ | -------------
+```javascript
 %tapered | requires the file for testing
 >>: _name_ | define test name
 >>: _variables_ | define variables
@@ -88,6 +89,7 @@ Syntax | Function
 >>:x: | skips a test
 >>:o: | tests only that test
 >>:p: | specifies number of assertions to run per test
+```
 
 #### Assertions
 ##### Components
@@ -97,9 +99,11 @@ Syntax | Function
 4. Description/Message e.g. _should multiply numbers_
 
 ##### Format
-**_>>:a: _Expression_ _Assertion_ _Expected_ _|_ _optional message__**
+```javascript
+>>:a: Expression Assertion Expected | optional message
 
-_**>>:a: demo.multiply(1,2) equal 2 | should multiply numbers**_
+>>:a: demo.multiply(1,2) equal 2 | should multiply numbers
+```
 
 #### Supported Assertions
 
