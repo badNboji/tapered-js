@@ -100,9 +100,9 @@ Syntax | Function
 
 ##### Format
 ```javascript
-**_>>:a: _Expression_ _Assertion_ _Expected_ _|_ _optional message__**
+>>:a: Expression Assertion Expected | optional message
 
-_**>>:a: demo.multiply(1,2) equal 2 | should multiply numbers**_
+>>:a: demo.multiply(1,2) equal 2 | should multiply numbers
 ```
 
 #### Supported Assertions
