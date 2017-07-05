@@ -1,3 +1,5 @@
+![Alt tapered logo](https://image.ibb.co/eiJTxv/A0033738_order_Mock_03071107_2.jpg "Optional title")
+
 ## Synopsis
 Easy inline test writing.
 tapered uses **Babel** and **Webpack** to generate **Tape** test files from test code written inline in comments
