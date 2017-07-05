@@ -75,20 +75,20 @@ test('add', function (t) {
 ## API Reference
 
 #### Key Reminders
-**_1. All tapered code must be written inside of _**block**_ comments._**
-**_2. Tests must always begin with a name._**
+* **_1. All tapered code must be written inside of _**block**_ comments._**
+* **_2. Tests must always begin with a name._**
 
 Syntax | Function
 ------------ | -------------
 ```javascript
-%tapered | requires the file for testing
->>: _name_ | define test name
->>: _variables_ | define variables
->>:a: _assertions_ | define assertions
-%g | defines global variables accessible across the entire test file
->>:x: | skips a test
->>:o: | tests only that test
->>:p: | specifies number of assertions to run per test
+%tapered | requires the containing file // require('/src/demo.js');
+>>: _name_ | define test name // test('name')...
+>>: _variables_ | define variables per specific test // let i = 0
+>>:a: _assertions_ | define assertions // demo.add(1, 2) equal 3
+%g | defines global variables accessible across the entire test file // let arr = [1, 2, 3]
+>>:x: | skips a test // test.skip('name')...
+>>:o: | tests only that test // test.only('name')...
+>>:p: | specifies how many assertions to run per test // t.plan('name')
 ```
 
 #### Assertions
