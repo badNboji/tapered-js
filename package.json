@@ -1,6 +1,6 @@
 {
   "name": "tapered.js",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Easy inline test-writing using Tape",
   "main": "index.js",
   "scripts": {
